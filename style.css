@@ -30,6 +30,11 @@ p {
   font-family: 'Source Sans Pro', sans-serif;
 }
 
+small {
+    color: rgb(23, 23, 24);
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
 .pink-container {
   background-color: #e84a5f;
   width: 100vw;

@@ -28,8 +28,9 @@ async function showPosts() {
          postEl.innerHTML = `
          <div class="number">${post.id}</div>
          <div class="post-info">
-           <h2 class="post-title">${post.title}</h2>
-           <p class="post-body">${post.body}</p>
+           <h2 class="post-title">${post.title.charAt(0).toUpperCase() + post.title.slice(1)}</h2>
+           <small class="post-date">${randomDate()}</small>
+           <p class="post-body">${post.body.charAt(0).toUpperCase() + post.body.slice(1)}.</p>
          </div>
        `;
          postsContainer.appendChild(postEl);
@@ -56,20 +57,26 @@ function showLoading() {
 // Filter post by input
 
 function filterPosts(e) {
-    const term = e.target.value.toUpperCase();
-    const posts = document.querySelectorAll('.post');
-  
-    posts.forEach(post => {
-      const title = post.querySelector('.post-title').innerText.toUpperCase();
-      const body = post.querySelector('.post-body').innerText.toUpperCase();
-  
-      if (title.indexOf(term) > -1 || body.indexOf(term) > -1) {
-        post.style.display = 'flex';
-      } else {
-        post.style.display = 'none';
-      }
-    });
-  }
+  const term = e.target.value.toUpperCase();
+  const posts = document.querySelectorAll('.post');
+
+  posts.forEach(post => {
+    const title = post.querySelector('.post-title').innerText.toUpperCase();
+    const body = post.querySelector('.post-body').innerText.toUpperCase();
+
+    if (title.indexOf(term) > -1 || body.indexOf(term) > -1) {
+      post.style.display = 'flex';
+    } else {
+      post.style.display = 'none';
+    }
+  });
+}
+
+function randomDate() {
+	const day = Math.floor(Math.random() * 27) + 1;
+	const month = Math.floor(Math.random() * 11) + 1;
+	return `${month}/${day}/2019`;
+}
 
 
 // Show intial posts
